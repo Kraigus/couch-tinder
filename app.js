@@ -7,7 +7,8 @@ const hbs = require('hbs');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const indexRouter = require('./src/routes/index.routes');
+const indexRouter = require("./src/routes/index.routes");
+const userRouter = require("./src/routes/user.router");
 
 const app = express();
 const PORT = 3000;
@@ -31,7 +32,8 @@ app.use(
   })
 );
 
-app.use('/', indexRouter);
+app.use("/", indexRouter);
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
