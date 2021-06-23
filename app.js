@@ -7,8 +7,8 @@ const hbs = require('hbs');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const indexRouter = require("./src/routes/index.routes");
-const userRouter = require("./src/routes/user.router");
+const indexRouter = require('./src/routes/index.routes');
+const userRouter = require('./src/routes/user.router');
 
 const app = express();
 const PORT = 3000;
@@ -26,14 +26,21 @@ app.use(
   session({
     secret: 'kuku1234',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false },
     store: MongoStore.create({ mongoUrl: dbUrl }),
   })
 );
 
-app.use("/", indexRouter);
-app.use("/users", userRouter);
+app.use((req, res, next) => {
+  res.locals.firstName = req.session.firstName;
+  res.locals.lastName = req.session.lastName;
+  res.locals.userId = req.session.userId;
+  next();
+});
+
+app.use('/', indexRouter);
+app.use('/users', userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
