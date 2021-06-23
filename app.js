@@ -1,15 +1,42 @@
 const express = require("express");
-// const { connect } = require("./db/config/connect");
+const { connect } = require("./src/db/config/connect");
+const { dbUrl } = require("./src/db/config/config");
 const morgan = require("morgan");
 const path = require("path");
 const hbs = require("hbs");
-// const { dbUrl } = require("../db/config/config");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+
+const indexRouter = require("./src/routes/index.routes");
+
 const app = express();
 const PORT = 3000;
 
+connect();
 
-app.listen(PORT, ()=> {
-  console.log(`Server has ben started on PORT ${PORT}`)
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use((req, res) => {
+  res.locals.username = req.session.username;
+})
+
+app.use(
+  session({
+    secret: "kuku1234",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+    store: MongoStore.create({ mongoUrl: dbUrl }),
+  })
+);
+
+app.use("/", indexRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server has ben started on PORT ${PORT}`);
 });
