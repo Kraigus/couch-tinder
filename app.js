@@ -8,6 +8,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 const indexRouter = require("./src/routes/index.routes");
+const userRouter = require("./src/routes/user.router");
 
 const app = express();
 const PORT = 3000;
@@ -22,8 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res) => {
-  res.locals.username = req.session.username;
-})
+  res.locals.firstName = req.session.firstName;
+  res.locals.lastName = req.session.lastName;
+  res.locals.userId = req.session.userId;
+});
 
 app.use(
   session({
@@ -36,6 +39,7 @@ app.use(
 );
 
 app.use("/", indexRouter);
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
