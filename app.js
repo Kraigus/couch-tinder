@@ -13,7 +13,7 @@ const app = express();
 const PORT = 3000;
 
 connect();
-
+hbs.registerPartials(path.resolve('views', 'partials'));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 app.use(morgan("dev"));
