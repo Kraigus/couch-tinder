@@ -10,15 +10,16 @@ router
     res.render("registration");
   })
   .post(async (req, res) => {
-    const { firstName, lastName, middleName, email, password } = req.body;
+    console.log(req.body);
+    const { firstName, lastName, email, password } = req.body;
     const hash = await bcrypt.hash(password, saltRounds);
     try {
-      const newUser = await User.create({ firstName, lastName, middleName, email, password: hash });
+      const newUser = await User.create({ firstName, lastName, email, password: hash });
       if (newUser) {
         res.redirect("/lk");
       }
     } catch (error) {
-      res.redirect("/registration");
+      res.redirect("/users/registration");
     }
   });
 
@@ -37,7 +38,7 @@ router
       }
     } catch (error) {
       console.log(error);
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   });
 
@@ -45,7 +46,7 @@ router.get("/logout", (req, res) => {
   req.session.destroy(() => {
     console.log("Good Bye");
   });
-  res.redirect("/login");
+  res.redirect("/users/login");
 });
 
 module.exports = router;
