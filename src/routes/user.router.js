@@ -1,5 +1,5 @@
-const express = require("express");
 const router = require("express").Router();
+const User = require("../db/model/user.model")
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;

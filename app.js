@@ -22,6 +22,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use((req, res) => {
+  res.locals.username = req.session.username;
+})
+
 app.use(
   session({
     secret: "kuku1234",
