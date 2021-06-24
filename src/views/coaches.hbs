@@ -4,14 +4,14 @@
   </div>
   <div class="dropdown col-6 my-2 justify-content-center">
     <select data-spec class="form-select" aria-label="Default select example">
-      <option selected>Фильтрация по специализации</option>
+      <option selected>Все специалисты</option>
       {{#each specialization}}
       <option value="{{this.name}}">{{this.name}}</option>
       {{/each}}
     </select>
   </div>
 </div>
-<div class="row">
+<div data-coaches class="row">
   {{#each coaches}}
   <div class="col-4 my-2">
       <div class="card">

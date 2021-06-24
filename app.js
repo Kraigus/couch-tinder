@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
-app.use('/coaches', coachRouter)
+app.use('/coaches', coachRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
