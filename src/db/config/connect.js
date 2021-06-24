@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const { dbUrl, options } = require('./config');
 
 function connect() {
-  mongoose.connect(dbUrl, options).then(() => console.log("Connect to DB"));
+  mongoose.connect(dbUrl, options).then(() => console.log('Connect to DB'));
 }
 
-module.exports = {connect};
+function disconnect() {
+  mongoose.disconnect();
+}
+
+module.exports = { connect, disconnect };
