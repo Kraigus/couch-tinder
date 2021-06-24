@@ -1,12 +1,11 @@
-const router = require('express').Router();
-const User = require('../db/model/user.model');
-const Specialization = require('../db/model/specialization.model');
-const Level = require('../db/model/level.model');
+const router = require("express").Router();
+const User = require("../db/model/user.model");
+const Specialization = require("../db/model/specialization.model");
+const Level = require("../db/model/level.model");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   const { userId } = req.session;
-  const { firstName, lastName, middleName, specialization, level } =
-    await User.findById(userId);
+  const { firstName, lastName, middleName, specialization, level } = await User.findById(userId);
 
   const specList = await Specialization.find().lean();
   const levelList = await Level.find().lean();
@@ -19,8 +18,8 @@ router.get('/', async (req, res) => {
     spec: specialization === name,
   }));
 
-  console.log(specForSelect, '=specForSelect');
-  res.render('lk', {
+  // console.log(specForSelect, "=specForSelect");
+  res.render("lk", {
     firstName,
     lastName,
     middleName,
@@ -32,7 +31,7 @@ router.get('/', async (req, res) => {
   });
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   const user = await User.findById(req.params.id);
   try {
     user.firstName = req.body.firstName;
