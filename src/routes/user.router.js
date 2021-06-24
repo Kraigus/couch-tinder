@@ -10,18 +10,17 @@ router
     res.render("registration");
   })
   .post(async (req, res) => {
-    const { firstName, lastName, middleName, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     const hash = await bcrypt.hash(password, saltRounds);
     try {
       const newUser = await User.create({
         firstName,
         lastName,
-        middleName,
         email,
         password: hash,
       });
       if (newUser) {
-        req.session.firstName = newUser.firsName;
+        req.session.firstName = newUser.firstName;
         req.session.userId = newUser._id;
         res.redirect("/lk");
       }
@@ -41,13 +40,13 @@ router
       const findUser = await User.findOne({ email });
       const comparePassword = await bcrypt.compare(password, findUser.password);
       if (findUser && comparePassword) {
-        req.session.firsName = findUser.name;
+        req.session.firstName = findUser.firstName;
         req.session.userId = findUser._id;
         res.redirect("/lk");
       }
     } catch (error) {
       console.log(error);
-      res.redirect("/login");
+      res.redirect("/users/login");
     }
   });
 

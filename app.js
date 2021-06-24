@@ -14,9 +14,9 @@ const app = express();
 const PORT = 3000;
 
 connect();
-
+hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "src", "views"));
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
