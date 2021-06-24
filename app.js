@@ -6,21 +6,24 @@ const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
-const indexRouter = require('./src/routes/index.routes');
-const userRouter = require('./src/routes/user.router');
-const coachRouter = require('./src/routes/coaches.routes')
+const indexRouter = require("./src/routes/index.routes");
+const userRouter = require("./src/routes/user.router");
 const lkRouter = require("./src/routes/lk.router");
+const coachRouter = require('./src/routes/coaches.routes')
 
 const app = express();
 const PORT = 3000;
 
 connect();
-hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "src", "views"));
-app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, "public")));
+
+hbs.registerPartials(path.join(__dirname, 'src', 'views', 'partials'));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'src', 'views'));
+app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
