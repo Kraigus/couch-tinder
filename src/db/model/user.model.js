@@ -8,6 +8,7 @@ const User = model("User", {
   password: { type: String, required: true },
   specialization: { type: String, required: false },
   level: { type: String, required: false },
+  score: { type: Number, default: 0},
   isAdmin: { type: Boolean, default: false },
 });
 
