@@ -1,6 +1,6 @@
 const { model } = require('mongoose');
 
-const Level = model('Level', {
+const Level = model('levels', {
   name: { type: String, required: true, unique: true },
 });
 
