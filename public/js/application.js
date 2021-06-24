@@ -1,20 +1,20 @@
-const $selectForm = document.querySelector(".form-select");
+const $selectForm = document.querySelector('.form-select');
 console.log($selectForm);
-$selectForm.addEventListener("change", async (e) => {
+$selectForm.addEventListener('change', async (e) => {
   e.preventDefault();
-  const getSpecResponce = await fetch("/coaches", {
-    method: "PUT",
+  const getSpecResponce = await fetch('/coaches', {
+    method: 'PUT',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ specialization: e.target.value }),
   });
   const { coaches } = await getSpecResponce.json();
-  console.log(">>>>>>>>>>>>>>>>>>>", coaches[0]);
-  const $coachContainer = document.querySelector("[data-coaches]");
-  $coachContainer.innerHTML = "";
+  console.log('>>>>>>>>>>>>>>>>>>>', coaches[0]);
+  const $coachContainer = document.querySelector('[data-coaches]');
+  $coachContainer.innerHTML = '';
   coaches.map((el) => {
-    $coachContainer.insertAdjacentHTML("beforeend", createNewList(el));
+    $coachContainer.insertAdjacentHTML('beforeend', createNewList(el));
   });
 });
 
