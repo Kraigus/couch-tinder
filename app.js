@@ -10,18 +10,18 @@ const MongoStore = require("connect-mongo");
 const indexRouter = require("./src/routes/index.routes");
 const userRouter = require("./src/routes/user.router");
 const lkRouter = require("./src/routes/lk.router");
-const coachRouter = require('./src/routes/coaches.routes')
+const coachRouter = require("./src/routes/coaches.routes");
 
 const app = express();
 const PORT = 3000;
 
 connect();
 
-hbs.registerPartials(path.join(__dirname, 'src', 'views', 'partials'));
-app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'src', 'views'));
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+hbs.registerPartials(path.join(__dirname, "src", "views", "partials"));
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "src", "views"));
+app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -42,10 +42,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', indexRouter);
-app.use('/users', userRouter);
-app.use('/coaches', coachRouter);
+app.use("/", indexRouter);
 app.use("/lk", lkRouter);
+app.use("/users", userRouter);
+app.use("/coaches", coachRouter);
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
