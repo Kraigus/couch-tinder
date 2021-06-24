@@ -8,7 +8,7 @@ router
   res.render("index");
 })
 .post(async (req, res) => {
-  const allUser = await User.find();
+  // const allUser = await User.find();
 });
 
 module.exports = router;
