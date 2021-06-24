@@ -1,0 +1,20 @@
+<h2>Коучи по лепке пельменей и готовке борща!</h2>
+<div class="row">
+  {{#each coaches}}
+  <div class="col-4 my-2">
+      <div class="card">
+        <img src="" class="card-img-top" alt="Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
+          <p class="card-text">
+            <ul>
+              <li>{{this.specialization}}</li>
+              <li>{{this.level}}</li>
+            </ul>
+          </p>
+          <a href="/coaches/{{this._id}}" class="btn btn-primary">Перейти к анкете</a>
+        </div>
+      </div>
+  </div>
+  {{/each}}
+</div>

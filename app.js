@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo');
 
 const indexRouter = require('./src/routes/index.routes');
 const userRouter = require('./src/routes/user.router');
+const coachRouter = require('./src/routes/coaches.routes')
 
 const app = express();
 const PORT = 3000;
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/coaches', coachRouter)
 
 app.listen(PORT, () => {
   console.log(`Server has ben started on PORT ${PORT}`);
