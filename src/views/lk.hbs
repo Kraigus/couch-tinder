@@ -1,0 +1,41 @@
+<form method="PUT" action="/lk/{{userId}}" name='formLk'>
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Загрузите фото</label>
+    <input type="image" src="URL" class="form-control" id="image" name="image">
+  </div>
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Имя</label>
+    <input type="text" class="form-control" id="firstName" name="firstName" value="{{firstName}}">
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Фамилия</label>
+    <input type="text" class="form-control" id="lastName" name="lastName" value="{{lastName}}">
+  </div>
+    <div class="mb-3">
+    <label for="middleName" class="form-label">Отчество</label>
+    <input type="text" class="form-control"  name="middleName" value="{{middleName}}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Область</label>
+    <select class="form-select" aria-label="Default select example" name="specialization">
+  <option selected>Выберите область деятельности</option>
+  <option value="Астрология">Астрология</option>
+  <option value="Таро">Таро</option>
+  <option value="Психология">Психология</option>
+  <option value="Гештальт">Гештальт</option>
+  <option value="Нумерология">Нумерология</option>
+  <option value="Нутрициология">Нутрициология</option>
+</select>
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Уровень</label>
+    <select class="form-select" aria-label="Default select example" name="level">
+  <option selected>Какой у Вас уровень</option>
+  <option value="Начинающий">Начинающий</option>
+  <option value="Практикующий">Практикующий</option>
+  <option  value="Мастер">Мастер</option>
+  <option value="Обучающий">Обучающий</option>
+</select>
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
