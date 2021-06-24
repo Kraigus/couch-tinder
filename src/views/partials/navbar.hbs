@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-gray-100 bg-secondary bg-gradient">
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{firstName}}</a>
+    <a class="navbar-brand text-white" href="#">{{firstName}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,6 +10,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link text-white" aria-current="page" href="/">Главная</a>
+          {{!-- <a class="nav-link" aria-current="page" href="/">На главную</a> --}}
         </li>
         {{#if admin}}
         <li class="nav-item">
@@ -18,10 +19,10 @@
         {{/if}}
         {{#if firstName}}
         <li class="nav-item">
-          <a class="nav-link text-white" href="/users/logout">Выход</a>
+          <a class="nav-link text-white" href="/coaches">Коучи</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">Форум</a>
+          <a class="nav-link text-white" href="/users/logout">Выход</a>
         </li>
         {{else}}
         <li class="nav-item">
