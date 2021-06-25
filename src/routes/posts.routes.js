@@ -49,8 +49,9 @@ router.get('/allposts', async (req, res) => {
   let users;
   console.log(req.url);
   try {
-    posts = await Posts.find().sort('createdAt');
+    posts = await Posts.find().sort('createdAt').populate('author');
     users = await Users.find();
+    console.log(posts);
   } catch (error) {
     return res.render('error', {
       message: 'Не удалось получить записи из базы данных.',
