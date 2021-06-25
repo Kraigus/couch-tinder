@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center">
+ 
+  <div class="col-4 my-2">
+      <div class="card">
+        <img src="{{user.image}}"" class="card-img-top" alt="Avatar">
+        <div class="card-body">
+          <h5 class="card-title">{{user.firstName}} {{user.middleName}} {{user.lastName}}</h5>
+          <p class="card-text">
+            <ul>
+              <li>Специализация: {{user.specialization}}</li>
+              <li>Уровень: {{user.level}}</li>
+              <li>Почта: {{user.email}}</li>              
+            </ul>
+          </p>
+          <a href="/coaches" class="btn ">Вернуться к списку анкет</a>
+          <a href="#" class="btn btn-success mx-2">Написать</a>
+        </div>
+      </div>
+
+</div>

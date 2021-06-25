@@ -1,0 +1,38 @@
+<div class="justify-content-center row">
+  <div class="col-6 my-2">
+    <h2>Специалисты:</h2>
+  </div>
+  <form data-spec-level class="dropdown col-6 my-2 justify-content-center">
+    <select name="specialization" data-spec class="form-select" aria-label="Default select example">
+      <option selected>Все специалисты</option>
+      {{#each specialization}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+    <select name="level" data-level class="form-select" aria-label="Default select example">
+      <option>Уровень</option>
+      {{#each level}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </form>
+</div>
+<div data-coaches class="row">
+  {{#each coaches}}
+  <div class="col-3 my-2">
+      <div class="card">
+        <img src={{this.image}} class="image center" alt="Аватар">
+        <div class="card-body">
+          <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
+          <p class="card-text">
+            <ul>
+              <li>Специализация: {{this.specialization}}</li>
+              <li>Уровень: {{this.level}}</li>
+            </ul>
+          </p>
+          <a href="/coaches/{{this._id}}" class="btn">Перейти к анкете</a>
+        </div>
+      </div>
+  </div>
+  {{/each}}
+</div>

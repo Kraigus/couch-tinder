@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-gray-100 bg-gradient">
+
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="/lk">{{firstName}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-dark" aria-current="page" href="/">Главная</a>
+        </li>        
+        {{#if firstName}}
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/lk">Личный кабинет</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/posts">Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/coaches">Все специалисты</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/users/logout">Выход</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/users/login">Вход</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/users/registration">Регистрация</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

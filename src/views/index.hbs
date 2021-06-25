@@ -1,0 +1,26 @@
+<div class="container-fluid mt-5">
+  <h1>Описание сайта</h1>
+  <p class="text-welcome">Здесь тебя научат заваривать чай в соответствии
+    с китайской чайной церемонией, разговорному английскому,
+    немецкому с нуля в обмен на твои знания по программированию на C++/Java Script.</p>
+  <div class="row align-items-center mt-5">
+    <h3>Топ специалистов:</h3>
+    {{#each user}}
+      <div class="col-3 my-2">
+          <div class="card">
+            <img src={{this.image}} class="image center" alt="Аватар">
+            <div class="card-body">
+              <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
+              <p class="card-text">
+                <ul>
+                  <li>Специализация: {{this.specialization}}</li>
+                  <li>Уровень: {{this.level}}</li>
+                </ul>
+              </p>
+              <a href="/coaches/{{this._id}}" class="btn">Перейти к анкете</a>
+            </div>
+          </div>
+      </div>
+    {{/each}}
+  </div> 
+</div>

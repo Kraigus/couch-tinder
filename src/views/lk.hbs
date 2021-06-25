@@ -1,0 +1,55 @@
+<div class="container2">
+<div class="container" id="cont-cont">
+<img src={{image}} class="imagelk center" alt="Аватар">
+<form action="/lk/upload" method="POST" enctype="multipart/form-data">
+    <label for="firstName" class="form-label"></label>
+    <input type="file" name="image" multiple-accept="image/*,image/jpeg"/>
+    <p><input type="submit" class="btn mt-2" value="Загрузить"></input></p>
+</form>
+</div>
+<div class="block" id="block2">
+<form method="PUT" action="/lk/{{userId}}" name='formLk' class="mt-3">
+  <div class="mb-3">
+    <label for="firstName" class="form-label">Имя</label>
+    <input type="text" class="form-control" id="firstName" name="firstName" value="{{firstName}}">
+  </div>
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Фамилия</label>
+    <input type="text" class="form-control" id="lastName" name="lastName" value="{{lastName}}">
+  </div>
+    <div class="mb-3">
+    <label for="middleName" class="form-label">Отчество</label>
+    <input type="text" class="form-control"  name="middleName" value="{{middleName}}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Область</label>
+    
+    <select class="form-select" aria-label="Default select example" name="specialization">
+      <option selected>Не выбрано</option>
+      {{#each specForSelect}}
+      {{#if this.spec}}
+      <option selected="{{this.spec}}" value="{{this.name}}">{{this.name}}</option>
+      {{else}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/if}}
+      {{/each}}
+  
+    </select>
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Уровень</label>
+    <select class="form-select" aria-label="Default select example" name="level">
+      {{#each levelForSelect}}
+      {{#if this.level}}
+      <option selected="{{this.level}}" value="{{this.name}}">{{this.name}}</option>
+      {{else}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/if}}
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit" class="btn mt-2">Сохранить</button>
+</form>
+</div>
+</div>
+
