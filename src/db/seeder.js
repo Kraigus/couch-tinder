@@ -1,7 +1,7 @@
-const { connect, disconnect } = require('../db/config/connect');
-const Specialization = require('../db/model/specialization.model');
-const Level = require('../db/model/level.model');
-const Posts = require('../db/model/post.model');
+const { connect, disconnect } = require("../db/config/connect");
+const Specialization = require("../db/model/specialization.model");
+const Level = require("../db/model/level.model");
+const Posts = require("../db/model/post.model");
 
 async function main() {
   await Specialization.deleteMany();
@@ -9,62 +9,59 @@ async function main() {
   await Posts.deleteMany();
 
   const specialization = [
-    { name: 'Астрология' },
-    { name: 'Таро' },
-    { name: 'Психология' },
-    { name: 'Гештальт' },
-    { name: 'Нумерология' },
-    { name: 'Нутрициология' },
-    { name: 'Йога' },
-    { name: 'Эзотерика' },
-    { name: 'Психотерпаия' },
+    { name: "Астрология" },
+    { name: "Таро" },
+    { name: "Психология" },
+    { name: "Гештальт" },
+    { name: "Нумерология" },
+    { name: "Нутрициология" },
+    { name: "Йога" },
+    { name: "Эзотерика" },
+    { name: "Психотерпаия" },
   ];
   const level = [
-    { name: 'Начинающий' },
-    { name: 'Практикующий' },
-    { name: 'Мастер' },
-    { name: 'Обучающий' },
+    { name: "Начинающий" },
+    { name: "Практикующий" },
+    { name: "Мастер" },
+    { name: "Обучающий" },
   ];
   const posts = [
     {
-      title: 'Salsify Taro Catsear Garlic',
-      body: 'Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.',
+      title: "Как обмануть ход времени",
+      body: 'Выглядеть молодой независимо от возраста — об этом мечтает каждая из нас. Есть много способов остановить время. Свои действенные рецепты подскажет и астрология. За неумолимое течение времени в астрологической науке отвечает Сатурн. Считается, что эта суровая, холодная планета включила свой "счетчик" в тот самый момент, когда первые люди согрешили, вкусив запретный плод с древа познания Добра и Зла. Если бы этого не произошло, мы оставались бы бессмертными, какими и создал нас Творец... В древности в качестве главного атрибута Сатурна изображали змею, лежащую кольцом, с собственным хвостом во рту (это древний символ вечности), а самого его отождествляли с древнегреческим богом Кроносом.',
     },
     {
-      title: 'Kohlrabi Radish Okra Azuki',
-      body: 'Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale.',
+      title: "Что нужно для обучения картам ТАРО?",
+      body: " Карты Таро – это не что-то мистическое и запредельное, их проявления вполне конкретны и реальны для понимания того, кто взял их в руки. Просто нужно научиться настраивать свое подсознание на определенные состояния. Именно такой подход поможет нам приблизиться к картам и увидеть то, что энергии Арканов проявляются в жизни человека вне зависимости от того, верим мы в них или нет.",
     },
     {
-      title: 'Lotus Root Water Spinach',
-      body: 'Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.',
+      title: "Как выйти из депрессии самостоятельно",
+      body: "Депрессия зависит от многих взаимосвязанных факторов: генетических, биохимических, внешних (факторов внешней среды). В этой книге рассматривается один очень важный фактор, который мы часто упускаем из виду: наши собственные привычки. Книга поможет вам заменить шаблоны поведения, способствующие депрессии, на более эффективные. Системный подход, описанный в книге, основывается на результатах лучших исследований по теме депрессии — с его помощью любой страдающий от этого недуга сможет начать новую жизнь.",
     },
     {
-      title: 'Bean Swiss Chard Seakale',
-      body: 'Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley',
+      title: "Правило хорошего тона в гештальт-терапии и психоанализе",
+      body: "В последнее время, обучаясь и работая в гештальте, я стал быстро уставать. Соответственно, возникла гипотеза о том, что я не придерживаюсь каких то гештальт-терапевтических правил или наоборот следую им слишком строго. Но каких? Я стал искать эти правила в литературе и постоянно сталкивался с «двойным посланием».   Гештальт-терапия   «невыражаема», это   больше интуиция,   чем теория,   отношение и правила несовместимы, важна перспектива, а не техника. Вершиной моего недоумения явилось определение К. Наранхо гештальт-терапии — как атеоретического эмпиризма.   Это напомнило мне дзеновскую поговорку: «Знающий не говорит, говорящий не знает». Тогда о чем все это? Этот парадокс связан с тем, что с легкой руки Ф. Перлза в гештальт-терапии длительное время было наложено «табу» на концептуализацию, философствование и теоретизирование, как на «слоновье и собачье дерьмо». Вспомним знаменитый призыв: «Потеряй  свой  разум и отдайся своим чувствам». Это табу, как впрочем, и всегда в жизни, привело к формированию одной из важных «дыр».",
     },
     {
-      title: 'Magis Kohlrabi Welsh Onion',
-      body: 'Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle seed collard greens nori. Grape wattle seed kombu beetroot horseradish carrot squash brussels sprout chard.',
+      title: "Нумерология",
+      body: "Вы не замечали, что нас везде преследуют и окружают числа: номерные знаки на автомобилях, номера телефонов, домов, квартир, этажей, время на часах, даты? У каждого человека есть свое число души, судьбы. Определенные комбинации цифр встречаются нам не случайно, они о чем-то сигнализируют и предупреждают. Нумерология как раз и исследует числа и их значение для человека.",
     },
     {
-      title: 'Parsley Shallot Courgette Tatsoi',
-      body: 'Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean.',
+      title: "Гипнотерапия в контексте похудения",
+      body: "Похудеть часто бывает сложно, и то, сколько на эту тему существует советов, спекуляций и мифов вовсе не делает процесс проще. Эта тема постоянно поднимается в СМИ и в рекламе. А аппетитные фото еды, которые также встречаются повсеместно, никак не помогают. Справиться с ними может помочь гипнотерапия - очень эффективный метод, позволяющий изменить убеждения и начать новую, более здоровую, жизнь. ",
     },
     {
-      title: 'Bean Mustard Tigernut',
-      body: 'Soko radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus root sea lettuce brussels sprout cabbage. Catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce tomato kale arugula melon sierra leone bologi rutabaga tigernut.',
+      title: "Йога для людей в старшем возрасте",
+      body: "Часто люди в возрасте отказывают себе в активном образе жизни и кардинальных переменах, сетуя на то, что уже поздно меняться. Так и ходят сгорбленные в парке, жалуясь на артриты, артрозы, повышенное давление, боли в спине и упадок сил и т.д. На самом деле меняться никогда не поздно, особенно если речь идет о йоге. Удивительных результатов можно достигнуть за полгода или год… Так что решать вам самим – стоит ли попробовать.",
     },
     {
-      title: 'Aubergine Spring Onion',
-      body: 'Sea lettuce gumbo grape kale kombu cauliflower salsify kohlrabi okra sea lettuce broccoli celery lotus root carrot winter purslane turnip greens garlic. JÃ­cama garlic courgette coriander radicchio plantain scallion cauliflower fava bean desert raisin spring onion chicory bunya nuts.',
+      title: 'Духовная практика "Познай себя - и ты познаешь весь мир"',
+      body: "Эта практика - метод пошагового развития осознанности. Его идея взята из упражнения «кино», предлагаемого в курсе дифференцированных функциональных состояний «Огненный цветок». Но сам подход изменён, по-иному разработан, его эффективность проверена на собственном опыте, и, возможно, он «придётся ко двору» кому-то из тех, кто искренне стремится открыть свою Божественную Суть.Источник - Эзотерика. Живое Знание",
     },
     {
-      title: 'Chicory Celtuce Parsley',
-      body: 'Soko radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus root sea lettuce brussels sprout cabbage. Catsear cauliflower garbanzo yarrow salsify chicory garlic bell pepper napa cabbage lettuce tomato kale arugula melon sierra leone bologi rutabaga tigernut.',
-    },
-    {
-      title: 'Coriander Yarrow Sweet Pepper',
-      body: 'Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean. Dandelion zucchini burdock yarrow chickpea dandelion sorrel courgette turnip greens tigernut soybean radish artichoke wattle seed endive groundnut broccoli arugula.',
+      title:
+        "Нас ставят в роль жертвы. Как выйти из этого состояния и выжить в условиях кризиса?",
+      body: "В мире и в России бушуют коронавирусная инфекция COVID-19 и экономический кризис. Настало время поговорить про позицию жертвы. Почему? Потому что многие люди живут в состоянии страха: страха перед болезнью, страха за своё будущее, страха за детей, страх за родителей, страх потери работы, безденежья и т.д. А позиция жертвы как раз формируется во время травмирующей ситуации, когда мы не можем на неё адекватно среагировать. Впервые в позицию жертвы мы попадаем в детстве. У нас отняли любимую игрушку, ударили, обидели, на нас накричали соседи. Мы не смогли за себя постоять. Да и заступников в виде родителей или старших братьев рядом не оказалось. В такие минуты нам очень горько, обидно. Мы чувствует себя обиженными, несчастными, беззащитными, который не может противостоять чьей-то силе.",
     },
   ];
   await Specialization.insertMany(specialization);
