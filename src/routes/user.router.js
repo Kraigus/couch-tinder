@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../db/model/user.model");
 
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
+const { saltRounds } = process.env;
 
 router
   .route("/registration")
@@ -11,7 +11,7 @@ router
   })
   .post(async (req, res) => {
     const { firstName, lastName, email, password } = req.body;
-    const hash = await bcrypt.hash(password, saltRounds);
+    const hash = await bcrypt.hash(password, Number(saltRounds));
     try {
       const newUser = await User.create({
         firstName,
