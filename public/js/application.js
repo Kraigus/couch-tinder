@@ -1,21 +1,24 @@
-const $selectForm = document.querySelector('.form-select');
+const $selectForm = document.querySelector("[data-spec-level]");
 console.log($selectForm);
 if ($selectForm) {
-  $selectForm.addEventListener('change', async (e) => {
+  $selectForm.addEventListener("change", async (e) => {
     e.preventDefault();
-    const getSpecResponce = await fetch('/coaches', {
-      method: 'PUT',
+    console.log(e.target.value);
+    const formData = Object.fromEntries(new FormData($selectForm))
+    console.log(formData);
+    const getSpecResponce = await fetch("/coaches", {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ specialization: e.target.value }),
+      body: JSON.stringify(formData),
     });
-    const { coaches } = await getSpecResponce.json();
-    console.log('>>>>>>>>>>>>>>>>>>>', coaches[0]);
-    const $coachContainer = document.querySelector('[data-coaches]');
-    $coachContainer.innerHTML = '';
+    const coaches = await getSpecResponce.json();
+    console.log(">>>>>>>>>>>>>>>>>>>", coaches);
+    const $coachContainer = document.querySelector("[data-coaches]");
+    $coachContainer.innerHTML = "";
     coaches.map((el) => {
-      $coachContainer.insertAdjacentHTML('beforeend', createNewList(el));
+      $coachContainer.insertAdjacentHTML("beforeend", createNewList(el));
     });
   });
 }
@@ -39,7 +42,7 @@ function createNewList(coach) {
 }
 const $formLk = document.forms.formLk;
 if ($formLk) {
-  $formLk.addEventListener('submit', async (e) => {
+  $formLk.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const obj = {
@@ -51,35 +54,35 @@ if ($formLk) {
     };
     console.log(obj);
 
-    console.log(' $formLk.action ==>', $formLk.action);
+    console.log(" $formLk.action ==>", $formLk.action);
 
     const response = await fetch($formLk.action, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify(obj),
     });
 
     if (response.ok) {
-      window.location = '/';
+      window.location = "/";
     } else {
-      console.log('error');
+      console.log("error");
     }
   });
 }
 
-const editEntryForm = document.querySelector('#editEntryForm');
-const deleteEntryButton = document.querySelector('#deleteEntryButton');
+const editEntryForm = document.querySelector("#editEntryForm");
+const deleteEntryButton = document.querySelector("#deleteEntryButton");
 
 if (editEntryForm) {
-  editEntryForm.addEventListener('submit', async (event) => {
+  editEntryForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const response = await fetch(`/posts/${event.target.dataset.entryid}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         title: event.target.title.value,
@@ -90,8 +93,8 @@ if (editEntryForm) {
     const responseJson = await response.json();
 
     if (!responseJson.isUpdateSuccessful) {
-      const errorDiv = document.createElement('div');
-      errorDiv.classList.add('error');
+      const errorDiv = document.createElement("div");
+      errorDiv.classList.add("error");
       errorDiv.innerText = responseJson.errorMessage;
       event.target.parentElement.append(errorDiv);
       return;
@@ -102,23 +105,23 @@ if (editEntryForm) {
 }
 
 if (deleteEntryButton) {
-  deleteEntryButton.addEventListener('click', async (event) => {
+  deleteEntryButton.addEventListener("click", async (event) => {
     const response = await fetch(`/posts/${event.target.dataset.entryid}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
 
     const responseJson = await response.json();
 
     if (!responseJson.isDeleteSuccessful) {
-      const errorLi = document.createElement('li');
-      errorLi.classList.add('pipe-separate');
-      errorLi.classList.add('left');
-      errorLi.classList.add('error');
+      const errorLi = document.createElement("li");
+      errorLi.classList.add("pipe-separate");
+      errorLi.classList.add("left");
+      errorLi.classList.add("error");
       errorLi.innerText = responseJson.errorMessage;
-      const editAndDeleteUl = document.querySelector('#editAndDeleteUl');
+      const editAndDeleteUl = document.querySelector("#editAndDeleteUl");
       editAndDeleteUl.append(errorLi);
       return;
     }
-    window.location = '/posts';
+    window.location = "/posts";
   });
 }
