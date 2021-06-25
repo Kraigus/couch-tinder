@@ -4,7 +4,7 @@ const Post = require("../db/model/post.model");
 
 router.route("/").get(async (req, res) => {
   const user = await User.find({ level:'Мастер'});
-  console.log(user);
+  // console.log(user);
   res.render("index", {user});
 });
 

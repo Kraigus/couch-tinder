@@ -37,6 +37,17 @@ app.use(
   })
 );
 
+const storageConfig = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+app.use(multer({ storage: storageConfig }).single("image"));
+
 app.use((req, res, next) => {
   res.locals.firstName = req.session.firstName;
   res.locals.lastName = req.session.lastName;

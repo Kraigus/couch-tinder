@@ -21,7 +21,7 @@ $selectForm.addEventListener('change', async (e) => {
 function createNewList(coach) {
   return `<div class="col-4 my-2">
   <div class="card">
-    <img src="" class="card-img-top" alt="Avatar">
+    <img src="https://st.depositphotos.com/1003711/1972/i/600/depositphotos_19720535-stock-photo-no-face-man.jpg" class="card-img-top" alt="Avatar">
     <div class="card-body">
       <h5 class="card-title">${coach.firstName} ${coach.lastName}</h5>
       <p class="card-text">

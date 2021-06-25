@@ -2,6 +2,8 @@ const router = require("express").Router();
 const User = require("../db/model/user.model");
 const Specialization = require("../db/model/specialization.model");
 const Level = require("../db/model/level.model");
+// const multer  = require('multer')
+// const upload = multer({ storage: './public/images' })
 
 router.get("/", async (req, res) => {
   const { userId } = req.session;
@@ -45,5 +47,10 @@ router.put("/:id", async (req, res) => {
     res.status(500).end();
   }
 });
+
+// router.post('/:id', upload.single('image'), async (req, res, next) => {
+//   console.log(req.body);
+//   console.log(req.file);
+// })
 
 module.exports = router;
