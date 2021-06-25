@@ -4,7 +4,7 @@ if ($selectForm) {
   $selectForm.addEventListener("change", async (e) => {
     e.preventDefault();
     console.log(e.target.value);
-    const formData = Object.fromEntries(new FormData($selectForm))
+    const formData = Object.fromEntries(new FormData($selectForm));
     console.log(formData);
     const getSpecResponce = await fetch("/coaches", {
       method: "PUT",
@@ -26,7 +26,7 @@ if ($selectForm) {
 function createNewList(coach) {
   return `<div class="col-4 my-2">
   <div class="card">
-    <img src="${coach.image}" class="card-img-top" alt="Avatar">
+    <img src="${coach.image}" class="image center" alt="Аватар">
     <div class="card-body">
       <h5 class="card-title">${coach.firstName} ${coach.lastName}</h5>
       <p class="card-text">

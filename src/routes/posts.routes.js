@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   let posts;
   let users;
   try {
-    posts = await Posts.find();
+    posts = await Posts.mostRecent();
     users = await Users.find();
   } catch (error) {
     return res.render('error', {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
       error: {},
     });
   }
-  return res.render('posts/index', { posts, users });
+  return res.render('posts/index', { posts, users , showButton: true});
 });
 
 router.post('/', async (req, res) => {
@@ -42,6 +42,24 @@ router.get('/new', (req, res) => {
   } else {
     res.render('posts/index');
   }
+});
+
+router.get('/allposts', async (req, res) => {
+  let posts;
+  let users;
+  console.log(req.url);
+  try {
+    posts = await Posts.find().sort('createdAt').populate('author');
+    users = await Users.find();
+    console.log(posts);
+  } catch (error) {
+    return res.render('error', {
+      message: 'Не удалось получить записи из базы данных.',
+      error: {},
+    });
+  }
+
+  return res.render('posts/index', { posts, users, showButton : false });
 });
 
 router.get('/:id', async (req, res) => {

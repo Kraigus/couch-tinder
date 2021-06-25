@@ -20,7 +20,8 @@ const upload = multer({ storage });
 
 router.get("/", async (req, res) => {
   const { userId } = req.session;
-  const { firstName, lastName, middleName, specialization, level, image } = await User.findById(userId);
+  const { firstName, lastName, middleName, specialization, level, image } =
+    await User.findById(userId);
 
   const specList = await Specialization.find().lean();
   const levelList = await Level.find().lean();
@@ -33,7 +34,17 @@ router.get("/", async (req, res) => {
     spec: specialization === name,
   }));
 
-  res.render("lk", { firstName, lastName, middleName, specialization, level, userId, specForSelect, levelForSelect, image });
+  res.render("lk", {
+    firstName,
+    lastName,
+    middleName,
+    specialization,
+    level,
+    userId,
+    specForSelect,
+    levelForSelect,
+    image,
+  });
 });
 
 router.put("/:id", async (req, res) => {
@@ -52,8 +63,13 @@ router.put("/:id", async (req, res) => {
 });
 
 router.post("/upload", upload.single("image"), async (req, res) => {
-  const image = req.file.path.split("/").slice(-1)[0];
-  const newImage = await User.updateOne({ _id: req.session.userId }, { $set: { image: req.file.path } }, { upsert: true });
+  const image = req.file.path.split("/");
+  const imageWithoutPublic = `/${image.slice(1).join("/")}`;
+  await User.updateOne(
+    { _id: req.session.userId },
+    { $set: { image: imageWithoutPublic } },
+    { upsert: true }
+  );
   res.redirect("/lk");
 });
 

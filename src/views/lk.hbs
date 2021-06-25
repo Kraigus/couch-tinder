@@ -1,12 +1,13 @@
+<div class="container2">
 <div class="container" id="cont-cont">
-<img src={{image}} class="image center" alt="Аватар">
+<img src={{image}} class="imagelk center" alt="Аватар">
 <form action="/lk/upload" method="POST" enctype="multipart/form-data">
-    <div class="mb-3 mt-5">
     <label for="firstName" class="form-label"></label>
     <input type="file" name="image" multiple-accept="image/*,image/jpeg"/>
     <p><input type="submit" class="btn mt-2" value="Загрузить"></input></p>
 </form>
-
+</div>
+<div class="block" id="block2">
 <form method="PUT" action="/lk/{{userId}}" name='formLk' class="mt-3">
   <div class="mb-3">
     <label for="firstName" class="form-label">Имя</label>
@@ -50,3 +51,5 @@
   <button type="submit" class="btn mt-2">Сохранить</button>
 </form>
 </div>
+</div>
+
