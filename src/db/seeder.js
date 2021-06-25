@@ -2,6 +2,7 @@ const { connect, disconnect } = require('../db/config/connect');
 const Specialization = require('../db/model/specialization.model');
 const Level = require('../db/model/level.model');
 const Posts = require('../db/model/post.model');
+const User = require('../db/model/user.model');
 
 async function main() {
   await Specialization.deleteMany();
@@ -71,7 +72,7 @@ async function main() {
   await Level.insertMany(level);
   await Posts.insertMany(posts);
 }
-connect();
+
 main().then(() => {
   disconnect();
 });

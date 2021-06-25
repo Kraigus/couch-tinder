@@ -1,6 +1,6 @@
 const { model } = require("mongoose");
 
-const User = model("User", {
+const User = model("users", {
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   middleName: { type: String, required: false },
