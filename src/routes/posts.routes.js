@@ -47,9 +47,9 @@ router.get('/new', (req, res) => {
 router.get('/allposts', async (req, res) => {
   let posts;
   let users;
-  console.log(req.url);
   try {
-    posts = await Posts.find().sort('createdAt').populate('author');
+    posts = await Posts.find().sort({createdAt : -1}).populate('author');
+    console.log(posts);
     users = await Users.find();
     console.log(posts);
   } catch (error) {
