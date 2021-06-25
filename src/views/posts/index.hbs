@@ -1,6 +1,3 @@
-{{#if firstName}}
-<a href="/posts/new" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Write about Broccoli</a>
-{{/if}}
 <main role="main">
   <ul class="entries-list no-bullets no-padding">
     {{#each posts}}
@@ -11,4 +8,10 @@
       </li>
     {{/each}}
   </ul>
+  {{#if firstName}}
+  <a href="/posts/new" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Добавить новость</a>
+  {{/if}}
+  {{#if showButton}}
+  <a href="/posts/allposts" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Показать все новости</a>
+  {{/if}}
 </main>

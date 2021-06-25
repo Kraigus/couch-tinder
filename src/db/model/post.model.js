@@ -13,5 +13,8 @@ const post = new Schema(
   { timestamps: true }
 );
 
+post.statics.mostRecent = async function () {
+  return this.find().sort('createdAt').limit(5).exec();
+};
 
 module.exports = model('posts', post);
