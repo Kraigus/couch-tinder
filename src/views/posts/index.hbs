@@ -1,14 +1,18 @@
-<div class="container" id="cont-news">
+<main role="main">
   <ul class="entries-list no-bullets no-padding">
     {{#each posts}}
       <li class="entry-item pad-b-4">
         <a href="/posts/{{id}}" class="entry-title font-2 pad-b-1-4 c-black">{{this.title}}</a>
         <span class="entry-date block font-3-4 c-lt-gray">Written on {{this.createdAt}}</span>
         <p class="entry-stub">{{this.body}}</p>
+        <p class="entry-stub">Автор: {{this.author.firstName}} {{this.author.lastName}}</p>
       </li>
     {{/each}}
   </ul>
   {{#if firstName}}
-    <a href="/posts/new" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Добавить новый пост</a>
+  <a href="/posts/new" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Добавить новость</a>
   {{/if}}
-</div>
+  {{#if showButton}}
+  <a href="/posts/allposts" class="block button w-100 mar-t-2 mar-b-3 pad-2 round-1 text-c center">Показать все новости</a>
+  {{/if}}
+</main>
