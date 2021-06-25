@@ -10,7 +10,7 @@ const User = model("User", {
   level: { type: String, required: false },
   score: { type: Number, default: 0 },
   isAdmin: { type: Boolean, default: false },
-  image: { type: Boolean, default: false },
+  image: { type: String, default: false },
 });
 
 module.exports = User;
