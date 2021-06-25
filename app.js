@@ -6,6 +6,8 @@ const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 const indexRouter = require("./src/routes/index.routes");
 const userRouter = require("./src/routes/user.router");
@@ -35,6 +37,17 @@ app.use(
     store: MongoStore.create({ mongoUrl: dbUrl }),
   })
 );
+
+const storageConfig = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+app.use(multer({ storage: storageConfig }).single("image"));
 
 app.use((req, res, next) => {
   res.locals.firstName = req.session.firstName;

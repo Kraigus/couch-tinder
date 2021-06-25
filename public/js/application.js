@@ -37,7 +37,6 @@ function createNewList(coach) {
   </div>
 </div>`;
 }
-
 const $formLk = document.forms.formLk;
 if ($formLk) {
   $formLk.addEventListener('submit', async (e) => {

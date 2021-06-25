@@ -1,38 +1,25 @@
 <div class="container-fluid mt-5">
-<h1>Описание сайта</h1>
+  <h1>Описание сайта</h1>
   <p class="text-welcome">Здесь тебя научат заваривать чай в соответствии
-     с китайской чайной церемонией, разговорному английскому,
-      немецкому с нуля в обмен на программирование на C++/Java Script.</p>
+    с китайской чайной церемонией, разговорному английскому,
+    немецкому с нуля в обмен на твои знания по программированию на C++/Java Script.</p>
   <div class="row align-items-center mt-5">
-    <h3>Топ специалистов</h3>
-    <a href="/coaches" class="text-header"><h4>Все специалисты</h4></a>
-  <div class="card" style="width: 18rem;">
-    <img src="https://www.1napc.ru/wp-content/uploads/2017/07/idia.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">bla bla</p>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="https://static.tildacdn.com/tild3866-6363-4934-b136-663766333131/hiX0xT41.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">bla bla</p>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="https://www.1napc.ru/wp-content/uploads/2017/07/idia.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">bla bla</p>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="https://static.tildacdn.com/tild3866-6363-4934-b136-663766333131/hiX0xT41.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">bla bla</p>
-    </div>
-  </div>
-  </div>
+    <h3>Топ специалистов:</h3>
+    {{#each user}}
+      <div class="col-3 my-2">
+          <div class="card">
+            <img src="" class="card-img-top" alt="Eto Avatar">
+            <div class="card-body">
+              <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
+              <p class="card-text">
+                <ul>
+                  <li>Специализация: {{this.specialization}}</li>
+                  <li>Уровень: {{this.level}}</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+      </div>
+    {{/each}}
+  </div> 
 </div>

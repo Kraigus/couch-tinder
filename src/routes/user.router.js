@@ -25,7 +25,6 @@ router
         // console.log("oui");
         req.session.firstName = newUser.firstName;
         req.session.lastName = newUser.lastName;
-        console.log(req.session.firstName);
         req.session.userId = newUser._id;
         res.redirect("/lk");
       }
