@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div class="col-4 my-2">
       <div class="card">
-        <img src="https://st.depositphotos.com/1003711/1972/i/600/depositphotos_19720535-stock-photo-no-face-man.jpg" class="card-img-top" alt="Avatar">
+        <img src={{user.image}} class="card-img-top" alt="Avatar">
         <div class="card-body">
           <h5 class="card-title">{{user.firstName}} {{user.middleName}} {{user.lastName}}</h5>
           <p class="card-text">
@@ -11,7 +11,7 @@
               <li>Почта: {{user.email}}</li>              
             </ul>
           </p>
-          <a href="/coaches/" class="btn btn-primary">Вернуться к списку анкет</a>
+          <a href="/coaches" class="btn ">Вернуться к списку анкет</a>
           <a href="#" class="btn btn-success mx-2">Написать</a>
         </div>
       </div>

@@ -40,6 +40,7 @@ app.use((req, res, next) => {
   res.locals.firstName = req.session.firstName;
   res.locals.lastName = req.session.lastName;
   res.locals.userId = req.session.userId;
+  res.locals.isAdmin = req.session.isAdmin;
   next();
 });
 

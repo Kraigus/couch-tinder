@@ -1,6 +1,6 @@
 <div class="justify-content-center row">
   <div class="col-6 my-2">
-    <h2>Коучи по лепке пельменей и готовке борща!</h2>
+    <h2>Специалисты:</h2>
   </div>
   <div class="dropdown col-6 my-2 justify-content-center">
     <select data-spec class="form-select" aria-label="Default select example">
@@ -9,13 +9,20 @@
       <option value="{{this.name}}">{{this.name}}</option>
       {{/each}}
     </select>
+    
+    <select data-level class="form-select" aria-label="Default select example">
+      <option>Уровень</option>
+      {{#each level}}
+      <option value="{{this.name}}">{{this.name}}</option>
+      {{/each}}
+    </select>
   </div>
 </div>
 <div data-coaches class="row">
   {{#each coaches}}
-  <div class="col-4 my-2">
+  <div class="col-3 my-2">
       <div class="card">
-        <img src={{this.image}} class="card-img-top" alt="Аватар">
+        <img src={{this.image}} class="image center" alt="Аватар">
         <div class="card-body">
           <h5 class="card-title">{{this.firstName}} {{this.lastName}}</h5>
           <p class="card-text">
@@ -24,7 +31,7 @@
               <li>Уровень: {{this.level}}</li>
             </ul>
           </p>
-          <a href="/coaches/{{this._id}}" class="btn btn-primary">Перейти к анкете</a>
+          <a href="/coaches/{{this._id}}" class="btn">Перейти к анкете</a>
         </div>
       </div>
   </div>

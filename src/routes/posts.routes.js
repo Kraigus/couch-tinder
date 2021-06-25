@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
   try {
     console.log(req.params.id);
     post = await Posts.findById(req.params.id);
-    show = post.author == res.locals.userId;
+    show = post.author == res.locals.userId || res.locals.isAdmin;
   } catch (error) {
     return res.render('error', {
       message: 'Не удалось получить запись из базы данных.',

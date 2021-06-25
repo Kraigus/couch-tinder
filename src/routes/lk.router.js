@@ -2,12 +2,25 @@ const router = require("express").Router();
 const User = require("../db/model/user.model");
 const Specialization = require("../db/model/specialization.model");
 const Level = require("../db/model/level.model");
-// const multer  = require('multer')
-// const upload = multer({ storage: './public/images' })
+const multer = require("multer");
+const { nanoid } = require("nanoid");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/images");
+  },
+  filename: (req, file, cb) => {
+    const newFileName = nanoid(10);
+    const extension = file.originalname.split(".").slice(-1);
+    cb(null, newFileName + "." + extension);
+  },
+});
+
+const upload = multer({ storage });
 
 router.get("/", async (req, res) => {
   const { userId } = req.session;
-  const { firstName, lastName, middleName, specialization, level } = await User.findById(userId);
+  const { firstName, lastName, middleName, specialization, level, image } = await User.findById(userId);
 
   const specList = await Specialization.find().lean();
   const levelList = await Level.find().lean();
@@ -20,17 +33,7 @@ router.get("/", async (req, res) => {
     spec: specialization === name,
   }));
 
-  // console.log(specForSelect, "=specForSelect");
-  res.render("lk", {
-    firstName,
-    lastName,
-    middleName,
-    specialization,
-    level,
-    userId,
-    specForSelect,
-    levelForSelect,
-  });
+  res.render("lk", { firstName, lastName, middleName, specialization, level, userId, specForSelect, levelForSelect, image });
 });
 
 router.put("/:id", async (req, res) => {
@@ -48,9 +51,10 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// router.post('/:id', upload.single('image'), async (req, res, next) => {
-//   console.log(req.body);
-//   console.log(req.file);
-// })
+router.post("/upload", upload.single("image"), async (req, res) => {
+  const image = req.file.path.split("/").slice(-1)[0];
+  const newImage = await User.updateOne({ _id: req.session.userId }, { $set: { image: req.file.path } }, { upsert: true });
+  res.redirect("/lk");
+});
 
 module.exports = router;
