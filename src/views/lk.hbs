@@ -1,11 +1,11 @@
-<div id="container2">
-<div class="block">
-<img id="foto" src="https://st.depositphotos.com/1003711/1972/i/950/depositphotos_19720535-stock-photo-no-face-man.jpg" class="card-img-top" alt="Добавьте Аватар">
-<form action="/upload" method="POST" enctype="multipart/form-data">
+<div class="container2">
+<div class="container" id="cont-cont">
+<img src={{image}} class="image center" alt="Аватар">
+<form action="/lk/upload" method="POST" enctype="multipart/form-data">
     {{!-- <div class="mb-3 mt-5"> --}}
     <label for="firstName" class="form-label"></label>
     <input type="file" name="image" multiple-accept="image/*,image/jpeg"/>
-    <p><input type="submit" class="btn btn-primary mt-2" value="Загрузить"></input></p>
+    <p><input type="submit" class="btn mt-2" value="Загрузить"></input></p>
 </form>
 </div>
 <div class="block" id="block2">
@@ -49,13 +49,8 @@
       {{/each}}
     </select>
   </div>
-  <button type="submit" class="btn btn-primary mt-2">Сохранить</button>
+  <button type="submit" class="btn mt-2">Сохранить</button>
 </form>
 </div>
-<div class="block" id="block3">
- <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">О себе</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
-</div>
-</div>
+

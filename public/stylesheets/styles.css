@@ -1,40 +1,30 @@
 body {
   min-height: 100vh;
-  background-color: #bdd5ff;
+  /* background-color: #bdd5ff; */
+}
+
+.image {
+  width: 300px;
+  height: 300px;
 }
 
 .text-welcome {
   font-size: 3ch;
 }
 
+.container2 {
+  display: flex;
+}
+
+#block2 {
+  margin-right: 500px;
+  width: 1400px;
+}
+
 nav,
 #sticky-footer {
-  background-color: #808000;
+  background-color: #16CE87
 }
-
-#container2 {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-}
-
-.block {
-  width: 400px;
-  margin: 10px;
-}
-
-#block3 {
-  height: 300px;
-  padding-top: 15px;
-}
-
-/* #foto {
-  height: 400px;
-} */
-
-/* #block2 {
-  padding-top: 120px;
-} */
 
 .fa {
   padding: 10px;
@@ -43,7 +33,7 @@ nav,
   text-align: center;
   text-decoration: none;
   /* margin: 5px 2px; */
-  border-radius: 100%;
+  border-radius: 20%;
 }
 
 .fa-facebook {
@@ -94,15 +84,17 @@ a:hover {
   text-decoration: underline;
 }
 
-.button {
-  background: #808000;
-  color: #fefefe;
+.button,
+.btn {
+  background: #bdd5ff;
+  color: grey;
   padding: 1em;
   text-decoration: none;
 }
 
-.button:hover {
-  color: white;
+.button:hover,
+.btn {
+  color: black;
   text-decoration: none;
-  background-color: #6b8e23;
+  background-color: #bdd5ff;
 }

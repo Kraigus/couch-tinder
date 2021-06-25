@@ -21,8 +21,6 @@ router
       });
       console.log(newUser);
       if (newUser) {
-        // console.log(req.session);
-        // console.log("oui");
         req.session.firstName = newUser.firstName;
         req.session.lastName = newUser.lastName;
         req.session.userId = newUser._id;
@@ -40,15 +38,13 @@ router
   })
   .post(async (req, res) => {
     const { email, password } = req.body;
-    // console.log(req.body);
     try {
-      // console.log(email);
       const findUser = await User.findOne({ email });
-      // console.log(findUser);
       const comparePassword = await bcrypt.compare(password, findUser.password);
       if (findUser && comparePassword) {
         req.session.firstName = findUser.firstName;
         req.session.userId = findUser._id;
+        req.session.isAdmin = findUser.isAdmin;
         res.redirect("/lk");
       }
     } catch (error) {
@@ -63,6 +59,5 @@ router.get("/logout", (req, res) => {
   });
   res.redirect("/users/login");
 });
-
 
 module.exports = router;

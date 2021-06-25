@@ -1,31 +1,33 @@
-const router = require('express').Router();
-const User = require('../db/model/user.model');
-const Specialization = require('../db/model/specialization.model');
+const router = require("express").Router();
+const User = require("../db/model/user.model");
+const Level = require("../db/model/level.model");
+const Specialization = require("../db/model/specialization.model");
 
 router
-  .route('/')
+  .route("/")
   .get(async (req, res) => {
     const coaches = await User.find({ isAdmin: false });
-    console.log(coaches);
     const specialization = await Specialization.find();
-    console.log(specialization);
-    res.render('coaches', { coaches, specialization });
+    const level = await Level.find();
+    res.render("coaches", { coaches, specialization, level });
   })
   .put(async (req, res) => {
-    console.log(req.body);
-    if (req.body.specialization === 'Все специалисты') {
+    if (req.body.specialization === "Все специалисты" || req.body.level === "Уровень") {
       const coaches = await User.find();
-      res.json({ coaches });
+      const level = await Level.find();
+      res.json({ coaches, level });
     } else {
       const coaches = await User.find(req.body);
-      res.json({ coaches });
+      const level = await Level.find(req.body.level);
+      console.log(req.body.level);
+      res.json({ coaches, level });
     }
   });
 
-router.route('/:id').get(async (req, res) => {
+router.route("/:id").get(async (req, res) => {
   const user = await User.find({ _id: req.params.id });
-  console.log(user)
-  res.render('profile', { user: user[0] });
+  console.log(user);
+  res.render("profile", { user: user[0] });
 });
 
 module.exports = router;
