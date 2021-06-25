@@ -1,8 +1,13 @@
+
+<img src="" class="card-img-top" alt="Добавьте Аватар">
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="mb-3 mt-5">
+    <label for="firstName" class="form-label"></label>
+    <input type="file" name="image" multiple-accept="image/*,image/jpeg"/>
+    <p><input type="submit" class="btn btn-primary mt-2" value="Загрузить"></input></p>
+</form>
+
 <form method="PUT" action="/lk/{{userId}}" name='formLk' class="mt-3">
-{{!-- <div class="card" style="width: 18rem;">
-  <img src="https://st.depositphotos.com/1003711/1972/i/600/depositphotos_19720535-stock-photo-no-face-man.jpg" class="card-img-top" alt="...">
-  <input name="myFile" type="file">
-</div> --}}
   <div class="mb-3">
     <label for="firstName" class="form-label">Имя</label>
     <input type="text" class="form-control" id="firstName" name="firstName" value="{{firstName}}">
@@ -43,11 +48,4 @@
     </select>
   </div>
   <button type="submit" class="btn btn-primary mt-2">Сохранить</button>
-</form>
-
-<form action="/upload" method="POST" enctype="multipart/form-data">
-    <div class="mb-3 mt-5">
-    <label for="firstName" class="form-label"></label>
-    <input type="file" name="image" multiple-accept="image/*,image/jpeg"/>
-    <p><input type="submit" class="btn btn-primary mt-2" value="Загрузить"></input></p>
 </form>

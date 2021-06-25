@@ -6,7 +6,9 @@ router
   .route('/')
   .get(async (req, res) => {
     const coaches = await User.find({ isAdmin: false });
+    console.log(coaches);
     const specialization = await Specialization.find();
+    console.log(specialization);
     res.render('coaches', { coaches, specialization });
   })
   .put(async (req, res) => {

@@ -6,13 +6,12 @@ const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
 
 const indexRouter = require("./src/routes/index.routes");
 const userRouter = require("./src/routes/user.router");
 const lkRouter = require("./src/routes/lk.router");
 const coachRouter = require("./src/routes/coaches.routes");
+const postsRouter = require("./src/routes/posts.routes");
 
 const app = express();
 const PORT = 3000;
@@ -37,17 +36,6 @@ app.use(
   })
 );
 
-const storageConfig = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-
-app.use(multer({ storage: storageConfig }).single("image"));
-
 app.use((req, res, next) => {
   res.locals.firstName = req.session.firstName;
   res.locals.lastName = req.session.lastName;
@@ -58,6 +46,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/lk", lkRouter);
 app.use("/users", userRouter);
+app.use("/posts", postsRouter);
 app.use("/coaches", coachRouter);
 
 app.listen(PORT, () => {

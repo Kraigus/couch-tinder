@@ -5,18 +5,12 @@ body {
 
 .text-welcome{
   font-size: 3ch;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  animation: blink 2s infinite;
 }
 
-@keyframes text-welcome {
-  from { opacity: 1;}
-  to { opacity: 0;}
- }
-
-.text-header {
-  text-align: right;
+nav, #sticky-footer {
+  background-color: #808000;
 }
+
 .fa {
   padding: 10px;
   /* font-size: 50px; */
@@ -52,3 +46,39 @@ body {
   color: white;
 }
 
+#cont-news{
+  margin-top: 30px;
+  max-width: 1100px;
+  width: 100%;
+  border: solid 1px grey;
+}
+
+#cont-cont{
+  margin-top: 30px;
+  max-width: 1100px;
+  width: 100%;
+  
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.button {
+  background: #808000;
+  color: #fefefe;
+  padding: 1em;
+  text-decoration: none;
+}
+
+.button:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #6B8E23;
+}
