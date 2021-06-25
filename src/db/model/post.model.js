@@ -8,7 +8,7 @@ const post = new Schema(
     body: String,
     createdAt: String,
     updatedAt: Date,
-    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    author: { type: Schema.Types.ObjectId, ref: 'users' },
   },
   { timestamps: true }
 );

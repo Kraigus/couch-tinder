@@ -1,42 +1,4 @@
-/* *       - https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
-/* :after  - https://developer.mozilla.org/en-US/docs/Web/CSS/%3A%3Aafter*/
-/* :before - https://developer.mozilla.org/en-US/docs/Web/CSS/%3A%3Abefore */
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-
-/* element styling */
-html {
-  height: 100%;
-  background-color: #32bb7d;
-  background: url(../images/diamond-bg.jpg);
-  background-attachment: fixed;
-  line-height: 1.4;
-}
-
-body {
-  height: 100%;
-}
-
-a {
-  color: #32bb7d;
-  text-decoration: none;
-}
-
-  a:hover {
-    color: #6ec7a5;
-    text-decoration: underline;
-  }
-
-input[type=text], input[type=password], textarea {
-  color: #05724f;
-}
-
-
-/* positioning */
+/* Позиционирование */
 .block {
   display: block;
 }
@@ -58,7 +20,7 @@ input[type=text], input[type=password], textarea {
 }
 
 
-/* formatting */
+/* Формат */
 .bg-dk-green {
   background-color: #05724f;
 }
@@ -66,19 +28,6 @@ input[type=text], input[type=password], textarea {
 .bg-white {
   background-color: #fefefe;
 }
-
-.button {
-  background: #32bb7d;
-  color: #fefefe;
-  padding: 1em;
-  text-decoration: none;
-}
-
-  .button:hover {
-    color: white;
-    text-decoration: none;
-    background-color: #6ec7a5;
-  }
 
 .c-dk-green {
   color: #05724f;
@@ -122,6 +71,14 @@ input[type=text], input[type=password], textarea {
 
 .hover-underline:hover {
   text-decoration: underline;
+}
+
+.mar-l-1 {
+  margin-left: 100px;
+}
+
+.mar-r-1 {
+  margin-right: 100px;
 }
 
 .mar-b-1 {
