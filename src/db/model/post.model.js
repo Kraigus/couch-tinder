@@ -8,13 +8,13 @@ const post = new Schema(
     body: String,
     createdAt: String,
     updatedAt: Date,
-    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    author: { type: Schema.Types.ObjectId, ref: 'users' },
   },
   { timestamps: true }
 );
 
 post.statics.mostRecent = async function () {
-  return this.find().sort('createdAt').limit(5).exec();
+  return this.find().sort({createdAt : -1}).limit(5).populate('author').exec();
 };
 
 module.exports = model('posts', post);
